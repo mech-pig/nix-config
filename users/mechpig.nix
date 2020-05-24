@@ -25,6 +25,11 @@ in {
       pkgs.standardnotes
     ];
 
+    home.file.".atom" = {
+      recursive = true;
+      source = ../dotfiles/.atom;
+    };
+
     programs.git = {
       enable = true;
       userEmail = "7295856+mech-pig@users.noreply.github.com";
