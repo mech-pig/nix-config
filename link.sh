@@ -3,4 +3,4 @@
 set -e
 dir=$(pwd)
 
-ln -fs "${dir}/configuratio.nix" /etc/nixos/configuration.nix
+ln -fs "${dir}/configuration.nix" /etc/nixos/configuration.nix
