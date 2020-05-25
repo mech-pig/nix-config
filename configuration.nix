@@ -68,6 +68,11 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  # Start ssh agent
+  programs.ssh = {
+    package = pkgs.openssh;
+    startAgent = true;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
