@@ -20,3 +20,14 @@ Remove any existing `/etc/nixos/configuration.nix` file and link the new configu
 ```sh
 sudo sh link.sh
 ```
+
+Finally, activate the configuration:
+```sh
+sudo nixos-rebuild switch
+```
+
+## References
+- [NixOS/Win dual boot guide](https://github.com/andywhite37/nixos/blob/master/DUAL_BOOT_WINDOWS_GUIDE.md): I followed this guide to install NixOS alongside an existing Windows 10 installation.
+- [NixOS manual](https://nixos.org/nixos/manual/)
+- [home-manager manual](https://rycee.gitlab.io/home-manager/)
+- [Nix User Repository](https://github.com/nix-community/NUR): a community-driven meta repository for Nix packages.
