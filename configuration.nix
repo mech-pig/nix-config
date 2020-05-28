@@ -14,6 +14,8 @@
     ./users/mechpig.nix
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   # Taken from https://rycee.gitlab.io/home-manager/index.html#sec-install-nixos-module
   home-manager = {
     useUserPackages = true;
