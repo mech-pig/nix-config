@@ -21,6 +21,7 @@ in {
   home-manager.users.mechpig = { pkgs, ... }: {
     home.packages = [
       pkgs.atom
+      pkgs.google-chrome
       pkgs.httpie
       pkgs.standardnotes
     ];
