@@ -22,6 +22,7 @@ in {
     home.packages = [
       pkgs.atom
       pkgs.google-chrome
+      pkgs.google-cloud-sdk
       pkgs.httpie
       pkgs.slack
       pkgs.standardnotes
