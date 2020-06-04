@@ -23,6 +23,7 @@ in {
       pkgs.atom
       pkgs.google-chrome
       pkgs.httpie
+      pkgs.slack
       pkgs.standardnotes
     ];
 
