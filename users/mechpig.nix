@@ -21,6 +21,7 @@ in {
   home-manager.users.mechpig = { pkgs, ... }: {
     home.packages = [
       pkgs.atom
+      pkgs.dropbox
       pkgs.google-chrome
       pkgs.google-cloud-sdk
       pkgs.httpie
