@@ -14,6 +14,7 @@ in {
     isNormalUser = true;
     extraGroups = [
       "wheel"          # Enable ‘sudo’ for the user.
+      "docker"         # Allow interaction with docker daemon.
       "networkmanager" # Has permission to change network settings.
     ];
   };
