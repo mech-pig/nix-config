@@ -23,6 +23,7 @@ in {
     home.packages = [
       pkgs.atom
       pkgs.dropbox
+      pkgs.gimp
       pkgs.google-chrome
       pkgs.google-cloud-sdk
       pkgs.httpie
