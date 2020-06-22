@@ -27,6 +27,7 @@ in {
       pkgs.google-chrome
       pkgs.google-cloud-sdk
       pkgs.httpie
+      pkgs.inkscape
       pkgs.slack
       pkgs.standardnotes
     ];
