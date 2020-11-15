@@ -6,6 +6,30 @@ let
   }) {
     inherit pkgs;
   };
+
+  # see https://nixos.wiki/wiki/VSCodium
+  vscodium-with-extensions = pkgs.vscode-with-extensions.override {
+    vscode = pkgs.vscodium;
+    vscodeExtensions = (
+      with pkgs.vscode-extensions; [
+        bbenoist.Nix
+        ms-azuretools.vscode-docker
+      ]
+    ) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+        name = "gitlens";
+        publisher = "eamodio";
+        version = "10.2.3";
+        sha256 = "00pddp8jlmqmc9c50vwm6bnkwg9gvvfn8mvrz1l9fl1w88ia1nz0";
+      }
+      {
+        name = "vscode-icons";
+        publisher = "vscode-icons-team";
+        version = "11.0.0";
+        sha256 = "18gf6ikkvqrihblwpmb4zpxg792la5yg8pwfaqm07dzwzfzxxvmv";
+      }
+    ];
+  };
 in {
   imports = [ <home-manager/nixos> ];
 
@@ -30,6 +54,7 @@ in {
       pkgs.inkscape
       pkgs.slack
       pkgs.standardnotes
+      vscodium-with-extensions
     ];
 
     home.file.".atom" = {
