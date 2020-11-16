@@ -3,15 +3,21 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+let
+  home-manager = builtins.fetchGit {
+    url = "https://github.com/rycee/home-manager.git";
+    rev = "63f299b3347aea183fc5088e4d6c4a193b334a41";
+    ref = "release-20.09";
+  };
+in
 {
   imports = [
     # Configure hardware
     /etc/nixos/hardware-configuration.nix
 
     # Setup users
-    <home-manager/nixos>
-    ./users/mechpig.nix
+    (import "${home-manager}/nixos")
+    (import ./users/mechpig.nix { inherit pkgs; inherit home-manager; })
   ];
 
   nixpkgs.config.allowUnfree = true;
