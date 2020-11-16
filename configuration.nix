@@ -54,6 +54,13 @@ in
   #   keyMap = "us";
   # };
 
+  # protect nix-shell against garbage collection
+  # as explained here: https://github.com/nix-community/nix-direnv#via-home-manager
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+  '';
+
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
 
