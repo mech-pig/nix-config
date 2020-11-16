@@ -40,6 +40,7 @@ in {
       "docker"         # Allow interaction with docker daemon.
       "networkmanager" # Has permission to change network settings.
     ];
+    shell = pkgs.zsh;
   };
 
   home-manager.users.mechpig = { pkgs, ... }: {
@@ -75,6 +76,12 @@ in {
         https-everywhere
         ublock-origin
       ];
+    };
+
+    programs.zsh = {
+      enable = true;
+      enableAutosuggestions = true;
+      enableCompletion = true;
     };
   };
 }
