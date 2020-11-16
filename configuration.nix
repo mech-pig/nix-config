@@ -57,6 +57,9 @@ in
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
 
+  # to enable zsh autocompletions for system packages
+  # see https://nix-community.github.io/home-manager/options.html#opt-programs.zsh.enableCompletion
+  environment.pathsToLink = [ "/share/zsh" ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
