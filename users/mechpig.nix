@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, home-manager, ... }:
 let
   nur = import (builtins.fetchTarball {
     url = "https://github.com/nix-community/NUR/archive/739ca4468aab62ca046bf309ba815aceb248919d.tar.gz";
@@ -31,7 +31,6 @@ let
     ];
   };
 in {
-  imports = [ <home-manager/nixos> ];
 
   # Define user account. Don't forget to set a password with ‘passwd’.
   users.users.mechpig = {
