@@ -43,6 +43,8 @@ in
     shell = pkgs.zsh;
   };
 
+  fonts.fontconfig.enable = true;
+
   home-manager.users.mechpig = { pkgs, ... }: {
     home.packages = [
       pkgs.atom
@@ -52,6 +54,7 @@ in
       pkgs.google-cloud-sdk
       pkgs.httpie
       pkgs.inkscape
+      pkgs.nerdfonts
       pkgs.slack
       pkgs.standardnotes
       vscodium-with-extensions
