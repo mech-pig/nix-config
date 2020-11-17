@@ -30,8 +30,8 @@ let
       }
     ];
   };
-in {
-
+in
+{
   # Define user account. Don't forget to set a password with ‘passwd’.
   users.users.mechpig = {
     isNormalUser = true;
@@ -60,6 +60,11 @@ in {
     home.file.".atom" = {
       recursive = true;
       source = ../dotfiles/.atom;
+    };
+
+    programs.direnv = {
+      enable = true;
+      enableNixDirenvIntegration = true;
     };
 
     programs.git = {
