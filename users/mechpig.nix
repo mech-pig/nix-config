@@ -17,6 +17,12 @@ let
       ]
     ) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
+        name = "even-better-toml";
+        publisher = "tamasfe";
+        version = "0.9.3";
+        sha256 = "16x2y58hkankazpwm93j8lqdn3mala7iayck548kki9zx4qrhhck";
+      }
+      {
         name = "gitlens";
         publisher = "eamodio";
         version = "10.2.3";
@@ -55,6 +61,7 @@ in
       pkgs.httpie
       pkgs.inkscape
       pkgs.nerdfonts
+      pkgs.starship
       pkgs.slack
       pkgs.standardnotes
       vscodium-with-extensions
@@ -63,6 +70,11 @@ in
     home.file.".atom" = {
       recursive = true;
       source = ../dotfiles/.atom;
+    };
+
+    home.file.".config/starship.toml" = {
+      recursive = false;
+      source = ./starship.toml;
     };
 
     programs.direnv = {
@@ -90,6 +102,9 @@ in
       enable = true;
       enableAutosuggestions = true;
       enableCompletion = true;
+      initExtra = ''
+        eval "$(${pkgs.starship}/bin/starship init zsh)"
+      '';
     };
   };
 }
