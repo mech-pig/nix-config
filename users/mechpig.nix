@@ -29,6 +29,12 @@ let
         sha256 = "00pddp8jlmqmc9c50vwm6bnkwg9gvvfn8mvrz1l9fl1w88ia1nz0";
       }
       {
+        name = "vscode-eslint";
+        publisher = "dbaeumer";
+        version = "2.1.8";
+        sha256 = "18yw1c2yylwbvg5cfqfw8h1r2nk9vlixh0im2px8lr7lw0airl28";
+      }
+      {
         name = "vscode-icons";
         publisher = "vscode-icons-team";
         version = "11.0.0";
