@@ -29,6 +29,12 @@ let
         sha256 = "00pddp8jlmqmc9c50vwm6bnkwg9gvvfn8mvrz1l9fl1w88ia1nz0";
       }
       {
+        name = "vscode-apollo";
+        publisher = "apollographql";
+        version = "1.17.0";
+        sha256 = "1ip7csdb1ssxj4bh4ml1y3z0b546aagfjfjh354cgjc5vazrk6rx";
+      }
+      {
         name = "vscode-eslint";
         publisher = "dbaeumer";
         version = "2.1.8";
