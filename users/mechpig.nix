@@ -17,6 +17,12 @@ let
       ]
     ) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
+        name = "elm-ls-vscode";
+        publisher = "Elmtooling";
+        version = "1.5.3";
+        sha256 = "007v28j5h4z4g1dr8ch93hy0cvzj92iwjnq6q9wn2mqxgff91ykn";
+      }
+      {
         name = "even-better-toml";
         publisher = "tamasfe";
         version = "0.9.3";
