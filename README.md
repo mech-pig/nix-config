@@ -2,7 +2,7 @@ My [Nix/NixOS](https://nixos.org) configuration files. Still a work in progress.
 
 ## Prerequisites
 
-- nixpkgs-20.03 (probably works for other versions as well)
+- nixpkgs-20.09
 - [home-manager](https://rycee.gitlab.io/home-manager/)
 
 
@@ -25,13 +25,6 @@ Finally, activate the configuration:
 ```sh
 sudo nixos-rebuild switch
 ```
-
-
-## Warnings
-
-Some things are not working as expected:
-- firefox extensions are not loaded, probably because of https://github.com/rycee/home-manager/issues/1216
-- [`standardnotes`](https://github.com/NixOS/nixpkgs/tree/nixos-20.03/pkgs/applications/editors/standardnotes) app crashes on start because of a segmentation fault
 
 
 ## References
