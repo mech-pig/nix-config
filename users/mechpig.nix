@@ -36,6 +36,12 @@ let
         sha256 = "00pddp8jlmqmc9c50vwm6bnkwg9gvvfn8mvrz1l9fl1w88ia1nz0";
       }
       {
+        name = "nix-env-selector";
+        publisher = "arrterian";
+        version = "1.0.2";
+        sha256 = "16pz637gx2kdm438irzx43jzjajhpjpzhgr15znkvaizy61s7vx1";
+      }
+      {
         name = "vscode-apollo";
         publisher = "apollographql";
         version = "1.17.0";
