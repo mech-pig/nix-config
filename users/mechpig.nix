@@ -79,6 +79,7 @@ in
   home-manager.users.mechpig = { pkgs, ... }: {
     home.packages = [
       pkgs.atom
+      pkgs.bitwarden
       pkgs.dropbox
       pkgs.gimp
       pkgs.google-chrome
@@ -118,6 +119,7 @@ in
       # extensions do not seem to work
       # see https://github.com/rycee/home-manager/issues/1216
       extensions = with nur.repos.rycee.firefox-addons; [
+        bitwarden
         https-everywhere
         ublock-origin
       ];
