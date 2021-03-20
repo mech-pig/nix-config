@@ -1,8 +1,8 @@
 { pkgs, home-manager, ... }:
 let
   nur = import (builtins.fetchTarball {
-    url = "https://github.com/nix-community/NUR/archive/739ca4468aab62ca046bf309ba815aceb248919d.tar.gz";
-    sha256 = "0za8hrqq21qz4mf1xal581dqg2yfqxgn6m8jrsrwspyl9p7dahp3";
+    url = "https://github.com/nix-community/NUR/archive/master.tar.gz";
+    sha256 = "01fnwys58jagvdby6463lggp1s23wr6whjdhgmg03xzwmj8wl3l9";
   }) {
     inherit pkgs;
   };
@@ -116,11 +116,50 @@ in
 
     programs.firefox = {
       enable = true;
-      # extensions do not seem to work
-      # see https://github.com/rycee/home-manager/issues/1216
+      profiles = {
+        mechpig = {
+          id = 0;
+          isDefault = true;
+          settings = {
+            "browser.formfill.enable" = false;
+            "browser.search.region" = "IT";
+            "browser.search.countryCode" = "IT";
+            "browser.search.isUS" = false;
+            "browser.search.suggest.enable" = false;
+            "browser.sessionstore.privacy_level" = 2;
+            "distribution.searchplugins.defaultLocale" = "en-US";
+            "general.useragent.locale" = "en-US";
+            "network.cookie.cookieBehavior" = 1;
+            "network.http.referer.XOriginPolicy" = 2;
+            "network.http.referer.XOriginTrimmingPolicy" = 2;
+            "privacy.firstparty.isolate" = true;
+            "privacy.resistFingerprinting" = true;
+            "privacy.clearOnShutdown.cache" = true;
+            "privacy.clearOnShutdown.cookies" = true;
+            "privacy.clearOnShutdown.downloads" = true;
+            "privacy.clearOnShutdown.formdata" = true;
+            "privacy.clearOnShutdown.history" = true;
+            "privacy.clearOnShutdown.offlineApps" = true;
+            "privacy.clearOnShutdown.openWindows" = true;
+            "privacy.clearOnShutdown.siteSettings" = true;
+            "privacy.sanitize.sanitizeOnShutdown" = true;
+            "privacy.trackingprotection.enabled" = true;
+            "privacy.trackingprotection.cryptomining" = true;
+            "privacy.trackingprotection.fingerprinting" = true;
+            "privacy.trackingprotection.socialtracking.enabled" = true;
+            "privacy.trackingprotection.socialtracking.annotate.enabled" = true;
+            "signon.rememberSignons" = false;
+          };
+        };
+      };
       extensions = with nur.repos.rycee.firefox-addons; [
         bitwarden
+        canvasblocker
+        clearurls
+        cookie-autodelete
+        decentraleyes
         https-everywhere
+        privacy-badger
         ublock-origin
       ];
     };
