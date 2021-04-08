@@ -90,6 +90,8 @@ in
       pkgs.starship
       pkgs.slack
       pkgs.standardnotes
+      pkgs.unzip
+      pkgs.zip
       vscodium-with-extensions
     ];
 
