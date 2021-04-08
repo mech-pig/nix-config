@@ -91,6 +91,7 @@ in
       pkgs.slack
       pkgs.standardnotes
       pkgs.unzip
+      pkgs.vlc
       pkgs.zip
       vscodium-with-extensions
     ];
