@@ -39,6 +39,10 @@ symbol = " "
 [julia]
 symbol = " "
 
+[kubernetes]
+disabled = false
+symbol = "☸ "
+
 [memory_usage]
 symbol = " "
 
