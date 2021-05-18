@@ -35,6 +35,7 @@ in
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Enables desktop environment's network manager
+  networking.networkmanager.dns = "dnsmasq";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -63,6 +64,12 @@ in
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
+
+  environment.etc = {
+    "NetworkManager/dnsmasq.d/dnsmasq.conf".text = ''
+      address=/localhost/127.0.0.1
+    '';
+  };
 
   # to enable zsh autocompletions for system packages
   # see https://nix-community.github.io/home-manager/options.html#opt-programs.zsh.enableCompletion
