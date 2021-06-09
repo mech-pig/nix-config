@@ -65,12 +65,6 @@ in
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
 
-  environment.etc = {
-    "NetworkManager/dnsmasq.d/dnsmasq.conf".text = ''
-      address=/localhost/127.0.0.1
-    '';
-  };
-
   # to enable zsh autocompletions for system packages
   # see https://nix-community.github.io/home-manager/options.html#opt-programs.zsh.enableCompletion
   environment.pathsToLink = [ "/share/zsh" ];
@@ -114,6 +108,11 @@ in
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+
+  services.dnsmasq = {
+    enable = true;
+    extraConfig = "address=/local/127.0.0.1";
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
