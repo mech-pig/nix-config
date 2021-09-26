@@ -13,6 +13,7 @@ let
     vscodeExtensions = (
       with pkgs.vscode-extensions; [
         bbenoist.Nix
+        justusadam.language-haskell
         ms-azuretools.vscode-docker
         ms-python.python
       ]
