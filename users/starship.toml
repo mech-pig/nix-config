@@ -12,7 +12,7 @@ symbol = " "
 [dart]
 symbol = " "
 
-[docker]
+[docker_context]
 symbol = " "
 
 [elixir]
@@ -27,8 +27,9 @@ symbol = " "
 [golang]
 symbol = " "
 
-[haskell]
-symbol = " "
+# not supported, see https://github.com/starship/starship/issues/1458
+# [haskell]
+# symbol = " "
 
 [hg_branch]
 symbol = " "
