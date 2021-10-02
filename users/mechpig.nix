@@ -13,6 +13,8 @@ let
     vscodeExtensions = (
       with pkgs.vscode-extensions; [
         bbenoist.Nix
+        haskell.haskell
+        justusadam.language-haskell
         ms-azuretools.vscode-docker
         ms-python.python
       ]
@@ -38,8 +40,8 @@ let
       {
         name = "nix-env-selector";
         publisher = "arrterian";
-        version = "1.0.2";
-        sha256 = "16pz637gx2kdm438irzx43jzjajhpjpzhgr15znkvaizy61s7vx1";
+        version = "1.0.7";
+        sha256 = "0mralimyzhyp4x9q98x3ck64ifbjqdp8cxcami7clvdvkmf8hxhf";
       }
       {
         name = "vscode-apollo";
