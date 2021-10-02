@@ -4,11 +4,7 @@
 
 { config, pkgs, ... }:
 let
-  home-manager = builtins.fetchGit {
-    url = "https://github.com/rycee/home-manager.git";
-    rev = "63f299b3347aea183fc5088e4d6c4a193b334a41";
-    ref = "release-20.09";
-  };
+  home-manager = import <home-manager/nixos>;
 in
 {
   imports = [
@@ -16,13 +12,12 @@ in
     /etc/nixos/hardware-configuration.nix
 
     # Setup users
-    (import "${home-manager}/nixos")
+    home-manager
     (import ./users/mechpig.nix { inherit pkgs; inherit home-manager; })
   ];
 
   nixpkgs.config.allowUnfree = true;
 
-  # Taken from https://rycee.gitlab.io/home-manager/index.html#sec-install-nixos-module
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
