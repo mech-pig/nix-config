@@ -15,6 +15,7 @@ let
         bbenoist.Nix
         haskell.haskell
         justusadam.language-haskell
+        matklad.rust-analyzer
         ms-azuretools.vscode-docker
         ms-python.python
       ]
