@@ -83,6 +83,7 @@ in
     home.packages = [
       pkgs.atom
       pkgs.bitwarden
+      pkgs.cryptomator
       pkgs.dropbox
       pkgs.gimp
       pkgs.google-chrome
