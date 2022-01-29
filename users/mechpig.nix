@@ -13,6 +13,7 @@ let
     vscodeExtensions = (
       with pkgs.vscode-extensions; [
         bbenoist.Nix
+        esbenp.prettier-vscode
         haskell.haskell
         justusadam.language-haskell
         matklad.rust-analyzer
