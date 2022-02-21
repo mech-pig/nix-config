@@ -1,8 +1,11 @@
 { pkgs, home-manager, ... }:
 let
+  # https://github.com/nix-community/NUR
   nur = import (builtins.fetchTarball {
-    url = "https://github.com/nix-community/NUR/archive/master.tar.gz";
-    sha256 = "01fnwys58jagvdby6463lggp1s23wr6whjdhgmg03xzwmj8wl3l9";
+    # master branch (2022/02/21)
+    url = "https://github.com/nix-community/NUR/archive/fb41f7b358548448ccf9046e6c15ac12e9cd3820.tar.gz";
+    # get sha with nix-prefetch-url --unpack <url>
+    sha256 = "1fij3g0731va9cbayvzki03xva825jm2c51q0rlk7wbbkdq6490x";
   }) {
     inherit pkgs;
   };
@@ -12,7 +15,7 @@ let
     vscode = pkgs.vscodium;
     vscodeExtensions = (
       with pkgs.vscode-extensions; [
-        bbenoist.Nix
+        bbenoist.nix
         esbenp.prettier-vscode
         haskell.haskell
         justusadam.language-haskell
