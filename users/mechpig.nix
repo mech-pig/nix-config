@@ -85,7 +85,6 @@ in
 
   home-manager.users.mechpig = { pkgs, ... }: {
     home.packages = [
-      pkgs.atom
       pkgs.bitwarden
       pkgs.cryptomator
       pkgs.dropbox
@@ -103,11 +102,6 @@ in
       pkgs.zip
       vscodium-with-extensions
     ];
-
-    home.file.".atom" = {
-      recursive = true;
-      source = ../dotfiles/.atom;
-    };
 
     home.file.".config/starship.toml" = {
       recursive = false;
