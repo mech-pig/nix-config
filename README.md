@@ -1,4 +1,4 @@
-My [Nix/NixOS](https://nixos.org) configuration files. Still a work in progress.
+My [Nix/NixOS](https://nixos.org) configuration files.
 
 
 ## Install as NixOS configuration
