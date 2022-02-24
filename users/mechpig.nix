@@ -15,56 +15,26 @@ let
     vscode = pkgs.vscodium;
     vscodeExtensions = (
       with pkgs.vscode-extensions; [
+        apollographql.vscode-apollo
+        arrterian.nix-env-selector
         bbenoist.nix
+        dbaeumer.vscode-eslint
+        eamodio.gitlens
+        elmtooling.elm-ls-vscode
         esbenp.prettier-vscode
         haskell.haskell
         justusadam.language-haskell
         matklad.rust-analyzer
         ms-azuretools.vscode-docker
         ms-python.python
+        tamasfe.even-better-toml
       ]
     ) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
-        name = "elm-ls-vscode";
-        publisher = "Elmtooling";
-        version = "1.5.3";
-        sha256 = "007v28j5h4z4g1dr8ch93hy0cvzj92iwjnq6q9wn2mqxgff91ykn";
-      }
-      {
-        name = "even-better-toml";
-        publisher = "tamasfe";
-        version = "0.9.3";
-        sha256 = "16x2y58hkankazpwm93j8lqdn3mala7iayck548kki9zx4qrhhck";
-      }
-      {
-        name = "gitlens";
-        publisher = "eamodio";
-        version = "10.2.3";
-        sha256 = "00pddp8jlmqmc9c50vwm6bnkwg9gvvfn8mvrz1l9fl1w88ia1nz0";
-      }
-      {
-        name = "nix-env-selector";
-        publisher = "arrterian";
-        version = "1.0.7";
-        sha256 = "0mralimyzhyp4x9q98x3ck64ifbjqdp8cxcami7clvdvkmf8hxhf";
-      }
-      {
-        name = "vscode-apollo";
-        publisher = "apollographql";
-        version = "1.17.0";
-        sha256 = "1ip7csdb1ssxj4bh4ml1y3z0b546aagfjfjh354cgjc5vazrk6rx";
-      }
-      {
-        name = "vscode-eslint";
-        publisher = "dbaeumer";
-        version = "2.1.8";
-        sha256 = "18yw1c2yylwbvg5cfqfw8h1r2nk9vlixh0im2px8lr7lw0airl28";
-      }
-      {
         name = "vscode-icons";
         publisher = "vscode-icons-team";
-        version = "11.0.0";
-        sha256 = "18gf6ikkvqrihblwpmb4zpxg792la5yg8pwfaqm07dzwzfzxxvmv";
+        version = "11.10.0";
+        sha256 = "0n96jdmqqh2v7mni4qv08qjxyhp8h82ck9rhmwnxp66ni5ybmj63";
       }
     ];
   };
