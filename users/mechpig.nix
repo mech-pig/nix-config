@@ -22,6 +22,7 @@ let
         eamodio.gitlens
         elmtooling.elm-ls-vscode
         esbenp.prettier-vscode
+        golang.go
         haskell.haskell
         justusadam.language-haskell
         matklad.rust-analyzer
