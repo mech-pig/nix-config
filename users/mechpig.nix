@@ -2,10 +2,10 @@
 let
   # https://github.com/nix-community/NUR
   nur = import (builtins.fetchTarball {
-    # master branch (2022/02/21)
-    url = "https://github.com/nix-community/NUR/archive/fb41f7b358548448ccf9046e6c15ac12e9cd3820.tar.gz";
+    # master branch (2022/09/15)
+    url = "https://github.com/nix-community/NUR/archive/49bfb1045b6b7dd5c31ee3bc5db616307c3840f1.tar.gz";
     # get sha with nix-prefetch-url --unpack <url>
-    sha256 = "1fij3g0731va9cbayvzki03xva825jm2c51q0rlk7wbbkdq6490x";
+    sha256 = "1wp1bq3xq5in1bwdab3wgp6hk16hxga2g5hq3psp0l8alzc0bgpf";
   }) {
     inherit pkgs;
   };
