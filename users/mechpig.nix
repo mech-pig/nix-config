@@ -3,9 +3,9 @@ let
   # https://github.com/nix-community/NUR
   nur = import (builtins.fetchTarball {
     # master branch (2022/09/15)
-    url = "https://github.com/nix-community/NUR/archive/49bfb1045b6b7dd5c31ee3bc5db616307c3840f1.tar.gz";
+    url = "https://github.com/nix-community/NUR/archive/cfd6fe7cb30a28b2899387ae0171f3e29fa7e686.tar.gz";
     # get sha with nix-prefetch-url --unpack <url>
-    sha256 = "1wp1bq3xq5in1bwdab3wgp6hk16hxga2g5hq3psp0l8alzc0bgpf";
+    sha256 = "0wslfgjzlvwx5zwgpljjss7nhmd6zfqxk8z6nmznwckpgwq9ppfb";
   }) {
     inherit pkgs;
   };
