@@ -13,7 +13,7 @@ in
 
     # Setup users
     home-manager
-    (import ./users/mechpig.nix { inherit pkgs; inherit home-manager; })
+    (import ./users/mechpig.nix { inherit config; inherit pkgs; inherit home-manager; })
   ];
 
   nixpkgs.config.allowUnfree = true;
