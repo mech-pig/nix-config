@@ -1,4 +1,4 @@
-{ pkgs, home-manager, ... }:
+{ config, pkgs, home-manager, ... }:
 let
   # https://github.com/nix-community/NUR
   nur = import (builtins.fetchTarball {
@@ -10,11 +10,22 @@ let
     inherit pkgs;
   };
 
+  # https://discourse.nixos.org/t/installing-only-a-single-package-from-unstable/5598/4
+  unstable = import (builtins.fetchGit {
+    name = "nixos-unstable-2022-10-07";
+    url = "https://github.com/nixos/nixpkgs/";
+    ref = "refs/heads/nixos-unstable";
+    # `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
+    rev = "37bd39839acf99c5b738319f42478296f827f274";
+  }) {
+    config = config.nixpkgs.config;
+  };
+
   # see https://nixos.wiki/wiki/VSCodium
-  vscodium-with-extensions = pkgs.vscode-with-extensions.override {
-    vscode = pkgs.vscodium;
+  vscodium-with-extensions = unstable.vscode-with-extensions.override {
+    vscode = unstable.vscodium;
     vscodeExtensions = (
-      with pkgs.vscode-extensions; [
+      with unstable.vscode-extensions; [
         apollographql.vscode-apollo
         arrterian.nix-env-selector
         bbenoist.nix
@@ -30,7 +41,7 @@ let
         ms-python.python
         tamasfe.even-better-toml
       ]
-    ) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    ) ++ unstable.vscode-utils.extensionsFromVscodeMarketplace [
       # to determine sha256
       # curl -X GET -o out.zip https://PUBLISHER.gallery.vsassets.io/_apis/public/gallery/publisher/PUBLISHER/extension/NAME/VERSION/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage
       # nix-hash --flat --base32 --type sha256 out.zip
