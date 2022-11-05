@@ -12,11 +12,11 @@ let
 
   # https://discourse.nixos.org/t/installing-only-a-single-package-from-unstable/5598/4
   unstable = import (builtins.fetchGit {
-    name = "nixos-unstable-2022-10-07";
+    name = "nixos-unstable-2022-11-04";
     url = "https://github.com/nixos/nixpkgs/";
     ref = "refs/heads/nixos-unstable";
     # `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
-    rev = "37bd39839acf99c5b738319f42478296f827f274";
+    rev = "a2a777538d971c6b01c6e54af89ddd6567c055e8";
   }) {
     config = config.nixpkgs.config;
   };
@@ -42,20 +42,21 @@ let
         tamasfe.even-better-toml
       ]
     ) ++ unstable.vscode-utils.extensionsFromVscodeMarketplace [
-      # to determine sha256
-      # curl -X GET -o out.zip https://PUBLISHER.gallery.vsassets.io/_apis/public/gallery/publisher/PUBLISHER/extension/NAME/VERSION/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage
-      # nix-hash --flat --base32 --type sha256 out.zip
       {
         name = "vscode-icons";
         publisher = "vscode-icons-team";
-        version = "11.10.0";
-        sha256 = "0n96jdmqqh2v7mni4qv08qjxyhp8h82ck9rhmwnxp66ni5ybmj63";
+        version = "12.0.1";
+        # curl -X GET -o out.zip https://vscode-icons-team.gallery.vsassets.io/_apis/public/gallery/publisher/vscode-icons-team/extension/vscode-icons/12.0.1/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage
+        # nix-hash --flat --base32 --type sha256 out.zip
+        sha256 = "0dfgjawrykw4iw0lc3i1zpkbcvy00x93ylwc6rda1ffzqgxq64ng";
       }
       {
         name = "zls-vscode";
         publisher = "AugusteRame";
-        version = "1.1.3";
-        sha256 = "0dhq9g4yyjhdq1w9vlraml59xfjj8hrlvl195lsh76yf370a7lbi";
+        version = "1.1.5";
+        # curl -X GET -o out.zip https://AugusteRame.gallery.vsassets.io/_apis/public/gallery/publisher/AugusteRame/extension/zls-vscode/1.1.5/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage
+        # nix-hash --flat --base32 --type sha256 out.zip
+        sha256 = "0j0fjvwihx7mqilhpjyrizrc0w2d9gkph2vhn13i2mglzxiknsrs";
       }
     ];
   };
