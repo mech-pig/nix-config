@@ -12,11 +12,11 @@ let
 
   # https://discourse.nixos.org/t/installing-only-a-single-package-from-unstable/5598/4
   unstable = import (builtins.fetchGit {
-    name = "nixos-unstable-2022-11-04";
+    name = "nixos-unstable-2023-03-05";
     url = "https://github.com/nixos/nixpkgs/";
     ref = "refs/heads/nixos-unstable";
     # `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
-    rev = "a2a777538d971c6b01c6e54af89ddd6567c055e8";
+    rev = "3c5319ad3aa51551182ac82ea17ab1c6b0f0df89";
   }) {
     config = config.nixpkgs.config;
   };
