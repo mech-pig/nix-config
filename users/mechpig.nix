@@ -2,21 +2,22 @@
 let
   # https://github.com/nix-community/NUR
   nur = import (builtins.fetchTarball {
-    # master branch (2022/10/05)
-    url = "https://github.com/nix-community/NUR/archive/cfd6fe7cb30a28b2899387ae0171f3e29fa7e686.tar.gz";
+    # master branch (2023/05/27)
+    # git ls-remote https://github.com/nix-community/NUR master
+    url = "https://github.com/nix-community/NUR/archive/c469c2991971d13c39c5a221c61408475aa53b1a.tar.gz";
     # get sha with nix-prefetch-url --unpack <url>
-    sha256 = "0wslfgjzlvwx5zwgpljjss7nhmd6zfqxk8z6nmznwckpgwq9ppfb";
+    sha256 = "0vq7vr1x4pd1cks0gfsfijbdl0fvlk9p12cq2l3fh8vmawzl9b1d";
   }) {
     inherit pkgs;
   };
 
   # https://discourse.nixos.org/t/installing-only-a-single-package-from-unstable/5598/4
   unstable = import (builtins.fetchGit {
-    name = "nixos-unstable-2022-11-04";
+    name = "nixos-unstable-2023-05-27";
     url = "https://github.com/nixos/nixpkgs/";
     ref = "refs/heads/nixos-unstable";
     # `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
-    rev = "a2a777538d971c6b01c6e54af89ddd6567c055e8";
+    rev = "f91ee3065de91a3531329a674a45ddcb3467a650";
   }) {
     config = config.nixpkgs.config;
   };
@@ -40,23 +41,16 @@ let
         ms-azuretools.vscode-docker
         ms-python.python
         tamasfe.even-better-toml
+        vscode-icons-team.vscode-icons
       ]
     ) ++ unstable.vscode-utils.extensionsFromVscodeMarketplace [
       {
-        name = "vscode-icons";
-        publisher = "vscode-icons-team";
-        version = "12.0.1";
-        # curl -X GET -o out.zip https://vscode-icons-team.gallery.vsassets.io/_apis/public/gallery/publisher/vscode-icons-team/extension/vscode-icons/12.0.1/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage
+        name = "vscode-zig";
+        publisher = "ziglang";
+        version = "0.3.2";
+        # curl -X GET -o out.zip https://ziglang.gallery.vsassets.io/_apis/public/gallery/publisher/ziglang/extension/vscode-zig/0.3.2/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage
         # nix-hash --flat --base32 --type sha256 out.zip
-        sha256 = "0dfgjawrykw4iw0lc3i1zpkbcvy00x93ylwc6rda1ffzqgxq64ng";
-      }
-      {
-        name = "zls-vscode";
-        publisher = "AugusteRame";
-        version = "1.1.5";
-        # curl -X GET -o out.zip https://AugusteRame.gallery.vsassets.io/_apis/public/gallery/publisher/AugusteRame/extension/zls-vscode/1.1.5/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage
-        # nix-hash --flat --base32 --type sha256 out.zip
-        sha256 = "0j0fjvwihx7mqilhpjyrizrc0w2d9gkph2vhn13i2mglzxiknsrs";
+        sha256 = "0zmjsszav43wj5nhq24m3nvzqjwqj3q3c61j466nai9sdwbbycdk";
       }
     ];
   };
@@ -100,6 +94,8 @@ in
       source = ./starship.toml;
     };
 
+    home.stateVersion = "22.11";
+
     programs.direnv = {
       enable = true;
       nix-direnv = {
@@ -127,6 +123,7 @@ in
             "browser.search.suggest.enable" = false;
             "browser.sessionstore.privacy_level" = 2;
             "distribution.searchplugins.defaultLocale" = "en-US";
+            "dom.security_https_only_mode" = true;
             "general.useragent.locale" = "en-US";
             "network.cookie.cookieBehavior" = 1;
             "network.http.referer.XOriginPolicy" = 2;
@@ -157,7 +154,6 @@ in
         clearurls
         cookie-autodelete
         decentraleyes
-        https-everywhere
         privacy-badger
         ublock-origin
       ];

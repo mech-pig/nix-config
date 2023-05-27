@@ -24,7 +24,7 @@ sudo nixos-rebuild switch
 
 ## Update NixOS version
 
-- Replace `nixos` channel to make it points to the correct version `sudo nix-channel --add https://nixos.org/channels/nixos-XX.YY nixos`
+- Replace `nixos` channel alias to make it point to the correct version `sudo nix-channel --add https://nixos.org/channels/nixos-XX.YY nixos`
 - Do the same for the `home-manager` channel: `sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-XX.YY.tar.gz home-manager` (ensure the version of `home-manager` matches the `nixos` one)
 - Update the channels: `sudo nix-channel --update`
 - Build the system and reboot: `sudo nixos-rebuild --upgrade boot`
