@@ -72,6 +72,7 @@ in
   home-manager.users.mechpig = { pkgs, ... }: {
     home.packages = [
       pkgs.bitwarden
+      pkgs.calibre 
       pkgs.cryptomator
       pkgs.dropbox
       pkgs.gimp
