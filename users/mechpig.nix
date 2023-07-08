@@ -79,6 +79,7 @@ in
         google-chrome
         google-cloud-sdk
         httpie
+        imagemagick
         inkscape
         maestral
         maestral-gui
