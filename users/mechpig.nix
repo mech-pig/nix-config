@@ -70,23 +70,27 @@ in
   fonts.fontconfig.enable = true;
 
   home-manager.users.mechpig = { pkgs, ... }: {
-    home.packages = [
-      pkgs.bitwarden
-      pkgs.calibre 
-      pkgs.cryptomator
-      pkgs.dropbox
-      pkgs.gimp
-      pkgs.google-chrome
-      pkgs.google-cloud-sdk
-      pkgs.httpie
-      pkgs.inkscape
-      pkgs.nerdfonts
-      pkgs.starship
-      pkgs.slack
-      pkgs.standardnotes
-      pkgs.unzip
-      pkgs.vlc
-      pkgs.zip
+    home.packages = (
+      with pkgs; [
+        bitwarden
+        calibre 
+        cryptomator
+        gimp
+        google-chrome
+        google-cloud-sdk
+        httpie
+        inkscape
+        maestral
+        maestral-gui
+        nerdfonts
+        starship
+        slack
+        standardnotes
+        unzip
+        vlc
+        zip
+      ]
+    ) ++ [
       vscodium-with-extensions
     ];
 
