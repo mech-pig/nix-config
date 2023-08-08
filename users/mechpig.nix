@@ -84,6 +84,7 @@ in
         maestral
         maestral-gui
         nerdfonts
+        obsidian
         starship
         slack
         standardnotes
