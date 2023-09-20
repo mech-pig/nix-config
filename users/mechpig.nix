@@ -2,22 +2,22 @@
 let
   # https://github.com/nix-community/NUR
   nur = import (builtins.fetchTarball {
-    # master branch (2023/05/27)
+    # master branch (2023/09/20)
     # git ls-remote https://github.com/nix-community/NUR master
-    url = "https://github.com/nix-community/NUR/archive/c469c2991971d13c39c5a221c61408475aa53b1a.tar.gz";
+    url = "https://github.com/nix-community/NUR/archive/367eb14c3319ed1e6e4fef3cc73f522a7be82069.tar.gz";
     # get sha with nix-prefetch-url --unpack <url>
-    sha256 = "0vq7vr1x4pd1cks0gfsfijbdl0fvlk9p12cq2l3fh8vmawzl9b1d";
+    sha256 = "0mgf01678wfx3wyk81ic8nrbq1fsxjq6cffsw15wqb25v7prkk8a";
   }) {
     inherit pkgs;
   };
 
   # https://discourse.nixos.org/t/installing-only-a-single-package-from-unstable/5598/4
   unstable = import (builtins.fetchGit {
-    name = "nixos-unstable-2023-05-27";
+    name = "nixos-unstable-2023-09-20";
     url = "https://github.com/nixos/nixpkgs/";
     ref = "refs/heads/nixos-unstable";
     # `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
-    rev = "f91ee3065de91a3531329a674a45ddcb3467a650";
+    rev = "970a59bd19eff3752ce552935687100c46e820a5";
   }) {
     config = config.nixpkgs.config;
   };
@@ -153,17 +153,18 @@ in
             "privacy.trackingprotection.socialtracking.annotate.enabled" = true;
             "signon.rememberSignons" = false;
           };
+
+          extensions = with nur.repos.rycee.firefox-addons; [
+            bitwarden
+            canvasblocker
+            clearurls
+            cookie-autodelete
+            decentraleyes
+            privacy-badger
+            ublock-origin
+          ];
         };
       };
-      extensions = with nur.repos.rycee.firefox-addons; [
-        bitwarden
-        canvasblocker
-        clearurls
-        cookie-autodelete
-        decentraleyes
-        privacy-badger
-        ublock-origin
-      ];
     };
 
     programs.zsh = {
