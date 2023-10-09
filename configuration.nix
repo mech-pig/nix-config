@@ -30,7 +30,7 @@ in
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Enables desktop environment's network manager
-  networking.networkmanager.dns = "dnsmasq";
+  networking.networkmanager.dns = "none";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -82,10 +82,15 @@ in
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
   # Start ssh agent
   programs.ssh = {
     package = pkgs.openssh;
     startAgent = true;
+  };
+
+  programs.zsh = {
+    enable = true;
   };
 
   # Open ports in the firewall.
@@ -106,7 +111,11 @@ in
 
   services.dnsmasq = {
     enable = true;
-    extraConfig = "address=/local/127.0.0.1";
+    # https://dnsmasq.org/docs/dnsmasq-man.html
+    settings = {
+      address = "/dev/127.0.0.1";
+      local = "/dev/";
+    };
   };
 
   # Enable the X11 windowing system.
