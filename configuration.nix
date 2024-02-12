@@ -116,8 +116,8 @@ in
     enable = true;
     # https://dnsmasq.org/docs/dnsmasq-man.html
     settings = {
-      address = "/dev/127.0.0.1";
-      local = "/dev/";
+      address = "/local/127.0.0.1";
+      local = "/local/";
     };
   };
 
