@@ -2,8 +2,6 @@ My [Nix/NixOS](https://nixos.org) configuration files.
 
 
 ## Install as NixOS configuration
-This configuration assumes the presence of a `hardware-configuration.nix` file in `/etc/nixos/` folder. This file can be generated automatically using the `nixos-generate-config` command, usually when installing NixOS for the first time, or it can be compiled by hand (see https://github.com/NixOS/nixos-hardware for pre-compiled, known-hardware configuration files).
-
 Clone repository and submodules:
 
 ```sh

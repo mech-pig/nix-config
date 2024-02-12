@@ -2,14 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
   home-manager = import <home-manager/nixos>;
 in
 {
   imports = [
     # Configure hardware
-    /etc/nixos/hardware-configuration.nix
+    (import ./hardware/lenovo-tp-x390.nix { inherit config; inherit pkgs; inherit lib; })
 
     # Setup users
     home-manager
