@@ -2,22 +2,23 @@
 let
   # https://github.com/nix-community/NUR
   nur = import (builtins.fetchTarball {
+    name = "nur-master-2024-02-11";
     # master branch (2023/09/20)
     # git ls-remote https://github.com/nix-community/NUR master
-    url = "https://github.com/nix-community/NUR/archive/367eb14c3319ed1e6e4fef3cc73f522a7be82069.tar.gz";
+    url = "https://github.com/nix-community/NUR/archive/8097ddfab1b83c26b2f828c069803e3ee6159bd8.tar.gz";
     # get sha with nix-prefetch-url --unpack <url>
-    sha256 = "0mgf01678wfx3wyk81ic8nrbq1fsxjq6cffsw15wqb25v7prkk8a";
+    sha256 = "1aaw7lqm8rrmcc1179gdzz49mcrnwi8sd1jdyb7qr9jd6780aq4l";
   }) {
     inherit pkgs;
   };
 
   # https://discourse.nixos.org/t/installing-only-a-single-package-from-unstable/5598/4
   unstable = import (builtins.fetchGit {
-    name = "nixos-unstable-2023-09-20";
+    name = "nixos-unstable-2024-02-11";
     url = "https://github.com/nixos/nixpkgs/";
     ref = "refs/heads/nixos-unstable";
     # `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
-    rev = "970a59bd19eff3752ce552935687100c46e820a5";
+    rev = "d934204a0f8d9198e1e4515dd6fec76a139c87f0";
   }) {
     config = config.nixpkgs.config;
   };
@@ -26,6 +27,7 @@ let
   vscodium-with-extensions = unstable.vscode-with-extensions.override {
     vscode = unstable.vscodium;
     vscodeExtensions = (
+      # look for extensions here: https://open-vsx.org/
       with unstable.vscode-extensions; [
         apollographql.vscode-apollo
         arrterian.nix-env-selector
@@ -42,16 +44,19 @@ let
         ms-python.python
         tamasfe.even-better-toml
         vscode-icons-team.vscode-icons
+        ziglang.vscode-zig
       ]
     ) ++ unstable.vscode-utils.extensionsFromVscodeMarketplace [
-      {
-        name = "vscode-zig";
-        publisher = "ziglang";
-        version = "0.3.2";
-        # curl -X GET -o out.zip https://ziglang.gallery.vsassets.io/_apis/public/gallery/publisher/ziglang/extension/vscode-zig/0.3.2/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage
-        # nix-hash --flat --base32 --type sha256 out.zip
-        sha256 = "0zmjsszav43wj5nhq24m3nvzqjwqj3q3c61j466nai9sdwbbycdk";
-      }
+      # in case required extensions are not found on openvsx
+      # we can downloaded from the vscode marketplace
+      # {
+      #   name = "vscode-zig";
+      #   publisher = "ziglang";
+      #   version = "0.3.2";
+      #   # curl -X GET -o out.zip https://ziglang.gallery.vsassets.io/_apis/public/gallery/publisher/ziglang/extension/vscode-zig/0.3.2/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage
+      #   # nix-hash --flat --base32 --type sha256 out.zip
+      #   sha256 = "0zmjsszav43wj5nhq24m3nvzqjwqj3q3c61j466nai9sdwbbycdk";
+      # }
     ];
   };
 in
