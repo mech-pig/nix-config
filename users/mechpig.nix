@@ -39,6 +39,7 @@ let
         haskell.haskell
         justusadam.language-haskell
         matklad.rust-analyzer
+        mkhl.direnv
         ms-azuretools.vscode-docker
         ms-python.python
         tamasfe.even-better-toml
