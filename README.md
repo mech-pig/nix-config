@@ -27,6 +27,13 @@ sudo nixos-rebuild switch
 - Update the channels: `sudo nix-channel --update`
 - Build the system and reboot: `sudo nixos-rebuild --upgrade boot`
 
+## Troubleshooting
+
+### Repair the bootloader
+This happened to me after I replaced an ssd with a new one. This operation has somehow corrupted the partition mapping and I was not able to boot neither into nixos nor into windows. I solved the problem by fixing the Windows EFI entry in the bootloader (references to disk partitions were wrong) followed by a rebuild of the nixos systemd-boot entries (this procedure is provided by nixos itself).
+
+- [Repair UEFI bootloader in Windows](https://woshub.com/how-to-repair-uefi-bootloader-in-windows-8/) - I just fixed the boot manager and bootloader using `bcedit` from a recovery usb drive, no need to re-create the EFI partition as it was already there, cloned from the previous ssd
+- [Re-installing the nixos bootloader](https://nixos.wiki/wiki/Bootloader#Re-installing_the_bootloader) - I used the [minimal nixos installer](https://nixos.org/download/#nixos-iso) to mount my existing `nixos` and `boot` partitions and just followed the procedure to re-install the bootloader.
 
 ## References
 - [NixOS/Win dual boot guide](https://github.com/andywhite37/nixos/blob/master/DUAL_BOOT_WINDOWS_GUIDE.md): I followed this guide to install NixOS alongside an existing Windows 10 installation.
