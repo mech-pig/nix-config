@@ -4,20 +4,20 @@ let
   nur = import (builtins.fetchTarball {
     name = "nur-master-2024-04-18";
     # git ls-remote https://github.com/nix-community/NUR master
-    url = "https://github.com/nix-community/NUR/archive/13455a253b4e890ae69925a7b554c660f63da85d.tar.gz";
-    # get sha with nix-prefetch-url --unpack <url>
-    sha256 = "1y0yid587znzab0rnds05j439r3pmavbik88dx9fkr5zsbc5j0rc";
+    url = "https://github.com/nix-community/NUR/archive/7f4366be821b64f130c08dd47cbc22cad3003d97.tar.gz";
+    # nix-prefetch-url --unpack https://github.com/nix-community/NUR/archive/7f4366be821b64f130c08dd47cbc22cad3003d97.tar.gz
+    sha256 = "1vkhfqafcyr17r4ghxhrgcgh39rij8avqi0541nm7178c45yiwl2";
   }) {
     inherit pkgs;
   };
 
   # https://discourse.nixos.org/t/installing-only-a-single-package-from-unstable/5598/4
   unstable = import (builtins.fetchGit {
-    name = "nixos-unstable-2024-04-18";
+    name = "nixos-unstable-2026-03-01";
     url = "https://github.com/nixos/nixpkgs/";
     ref = "refs/heads/nixos-unstable";
     # `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
-    rev = "5672bc9dbf9d88246ddab5ac454e82318d094bb8";
+    rev = "dd9b079222d43e1943b6ebd802f04fd959dc8e61";
   }) {
     config = config.nixpkgs.config;
   };
@@ -38,7 +38,7 @@ let
         golang.go
         haskell.haskell
         justusadam.language-haskell
-        matklad.rust-analyzer
+        rust-lang.rust-analyzer
         mkhl.direnv
         ms-azuretools.vscode-docker
         ms-python.python
@@ -72,12 +72,14 @@ in
     shell = pkgs.zsh;
   };
 
-  fonts.fontconfig.enable = true;
+  fonts = {
+    fontconfig.enable = true;
+  };
 
-  home-manager.users.mechpig = { pkgs, ... }: {
+  home-manager.users.mechpig = { pkgs, lib, ... }: {
     home.packages = (
       with pkgs; [
-        bitwarden
+        bitwarden-desktop
         calibre 
         cryptomator
         gimp
@@ -88,7 +90,6 @@ in
         inkscape
         maestral
         maestral-gui
-        nerdfonts
         obsidian
         starship
         slack
@@ -99,7 +100,9 @@ in
       ]
     ) ++ [
       vscodium-with-extensions
-    ];
+    ] ++
+      builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+    
 
     home.file.".config/starship.toml" = {
       recursive = false;
@@ -159,15 +162,17 @@ in
             "signon.rememberSignons" = false;
           };
 
-          extensions = with nur.repos.rycee.firefox-addons; [
-            bitwarden
-            canvasblocker
-            clearurls
-            cookie-autodelete
-            decentraleyes
-            privacy-badger
-            ublock-origin
-          ];
+          extensions = {
+            packages = with nur.repos.rycee.firefox-addons; [
+              bitwarden
+              canvasblocker
+              clearurls
+              cookie-autodelete
+              decentraleyes
+              privacy-badger
+              ublock-origin
+            ];
+          };
         };
       };
     };
@@ -176,7 +181,7 @@ in
       enable = true;
       enableAutosuggestions = true;
       enableCompletion = true;
-      initExtra = ''
+      initContent = ''
         eval "$(${pkgs.starship}/bin/starship init zsh)"
       '';
     };
