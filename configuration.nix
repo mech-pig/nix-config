@@ -33,7 +33,7 @@ in
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true; # Enables desktop environment's network manager
-  networking.networkmanager.dns = "none";
+  # networking.networkmanager.dns = "none";  # Uncomment if dnsmasq is used
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
@@ -83,8 +83,15 @@ in
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services = {
+    # Enable the OpenSSH daemon.
+    openssh.enable = true;
+
+    # Enable the KDE Desktop Environment.
+    desktopManager.plasma6.enable = true;
+    displayManager.sddm.enable = true;
+    displayManager.sddm.wayland.enable = true;
+  };
 
   # Start ssh agent
   programs.ssh = {
@@ -109,29 +116,16 @@ in
   hardware.bluetooth.enable = true;
 
   # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  hardware.pulseaudio.enable = false; # incompatible with pipewire
 
-  services.dnsmasq = {
-    enable = true;
-    # https://dnsmasq.org/docs/dnsmasq-man.html
-    settings = {
-      address = "/local/127.0.0.1";
-      local = "/local/";
-    };
-  };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "us";
-  services.xserver.xkbOptions = "eurosign:e";
-
-  # Enable touchpad support.
-  services.xserver.libinput.enable = true;
-
-  # Enable the KDE Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  # services.dnsmasq = {
+  #   enable = true;
+  #   # https://dnsmasq.org/docs/dnsmasq-man.html
+  #   settings = {
+  #     address = "/local/127.0.0.1";
+  #     local = "/local/";
+  #   };
+  # };
 
   # Enable and start docker daemon
   virtualisation.docker = {
