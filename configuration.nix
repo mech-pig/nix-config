@@ -115,9 +115,6 @@ in
   # Enable bluetooth
   hardware.bluetooth.enable = true;
 
-  # Enable sound.
-  hardware.pulseaudio.enable = false; # incompatible with pipewire
-
   # services.dnsmasq = {
   #   enable = true;
   #   # https://dnsmasq.org/docs/dnsmasq-man.html

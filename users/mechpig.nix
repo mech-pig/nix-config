@@ -130,8 +130,10 @@ in
 
     programs.git = {
       enable = true;
-      userEmail = "7295856+mech-pig@users.noreply.github.com";
-      userName = "mechpig";
+      settings.user = {
+        email = "7295856+mech-pig@users.noreply.github.com";
+        name = "mechpig";
+      };
     };
 
     programs.firefox = {
@@ -189,7 +191,7 @@ in
 
     programs.zsh = {
       enable = true;
-      enableAutosuggestions = true;
+      autosuggestion.enable = true;
       enableCompletion = true;
       initContent = ''
         eval "$(${pkgs.starship}/bin/starship init zsh)"
