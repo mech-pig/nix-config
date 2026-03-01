@@ -2,7 +2,7 @@
 let
   # https://github.com/nix-community/NUR
   nur = import (builtins.fetchTarball {
-    name = "nur-master-2024-04-18";
+    name = "nur-master-2026-03-01";
     # git ls-remote https://github.com/nix-community/NUR master
     url = "https://github.com/nix-community/NUR/archive/7f4366be821b64f130c08dd47cbc22cad3003d97.tar.gz";
     # nix-prefetch-url --unpack https://github.com/nix-community/NUR/archive/7f4366be821b64f130c08dd47cbc22cad3003d97.tar.gz
