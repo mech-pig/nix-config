@@ -31,6 +31,7 @@ let
         apollographql.vscode-apollo
         arrterian.nix-env-selector
         bbenoist.nix
+        charliermarsh.ruff
         dbaeumer.vscode-eslint
         eamodio.gitlens
         elmtooling.elm-ls-vscode
@@ -57,6 +58,14 @@ let
       #   # nix-hash --flat --base32 --type sha256 out.zip
       #   sha256 = "0zmjsszav43wj5nhq24m3nvzqjwqj3q3c61j466nai9sdwbbycdk";
       # }
+      {
+        name = "ty";
+        publisher = "astral-sh";
+        version = "2026.18.0";
+        # curl -X GET -o out.zip https://astral-sh.gallery.vsassets.io/_apis/public/gallery/publisher/astral-sh/extension/ty/2026.18.0/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage
+        # nix-hash --flat --base32 --type sha256 out.zip
+        sha256 = "B67gPxL0QSfg5e/HN5M5yaKAEIKesV+1gw3WihLW3GA=";
+      }
     ];
   };
 in
@@ -95,6 +104,7 @@ in
         slack
         standardnotes
         unzip
+        uv
         vlc
         zip
       ]
