@@ -99,6 +99,10 @@ in
     startAgent = true;
   };
 
+  # https://blog.kaorubb.org/en/posts/nixos-fix-could-not-start-dynamically-linked-executable/
+  # to use uv without too hassle
+  programs.nix-ld.enable = true;
+
   programs.zsh = {
     enable = true;
   };
