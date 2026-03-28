@@ -61,10 +61,8 @@ let
       {
         name = "ty";
         publisher = "astral-sh";
-        version = "2026.18.0";
-        # curl -X GET -o out.zip https://astral-sh.gallery.vsassets.io/_apis/public/gallery/publisher/astral-sh/extension/ty/2026.18.0/assetbyname/Microsoft.VisualStudio.Services.VSIXPackage
-        # nix-hash --flat --base32 --type sha256 out.zip
-        sha256 = "B67gPxL0QSfg5e/HN5M5yaKAEIKesV+1gw3WihLW3GA=";
+        version = "2026.20.0";
+        sha256 = "RveYO0k5wFotZ6R+7vYAIKoHBaurLPzx0Uv0EMPeinc=";
       }
     ];
   };
