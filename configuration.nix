@@ -5,6 +5,7 @@
 { config, pkgs, lib, ... }:
 let
   home-manager = import <home-manager/nixos>;
+  cfgNix = config.nix;
 in
 {
   imports = [
@@ -59,6 +60,14 @@ in
     keep-outputs = true
     keep-derivations = true
   '';
+
+  nix.settings = {
+    "trusted-substituters" = [ "https://cache.numtide.com" ];
+    "trusted-public-keys" = [
+      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+    ];
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
