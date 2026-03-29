@@ -108,6 +108,7 @@ in
       ]
     ) ++ [
       vscodium-with-extensions
+      (pkgs.writeShellScriptBin "llm" (builtins.readFile /home/mechpig/Developer/nix-config/flakes/jailed-ai-agents/llm.sh))
     ] ++
       builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
     
