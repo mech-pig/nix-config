@@ -17,9 +17,9 @@ in
   ];
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-  ];
+  # nixpkgs.config.permittedInsecurePackages = [
+  #   "electron-39.8.10"
+  # ];
 
   home-manager = {
     useUserPackages = true;
