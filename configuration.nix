@@ -140,7 +140,7 @@ in
 
   security.pki.caCertificateBlacklist = [
     "Comodo AAA Services root"
-    "emSign ECC Root CA - G3"
+    # "emSign ECC Root CA - G3" https://github.com/NixOS/nixpkgs/issues/249080
   ];
 
   system.autoUpgrade.enable = true;
