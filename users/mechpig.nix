@@ -2,22 +2,22 @@
 let
   # https://github.com/nix-community/NUR
   nur = import (builtins.fetchTarball {
-    name = "nur-master-2026-03-01";
-    # git ls-remote https://github.com/nix-community/NUR master
-    url = "https://github.com/nix-community/NUR/archive/7f4366be821b64f130c08dd47cbc22cad3003d97.tar.gz";
-    # nix-prefetch-url --unpack https://github.com/nix-community/NUR/archive/7f4366be821b64f130c08dd47cbc22cad3003d97.tar.gz
-    sha256 = "1vkhfqafcyr17r4ghxhrgcgh39rij8avqi0541nm7178c45yiwl2";
+    name = "nur-main-2026-11-01";
+    # git ls-remote https://github.com/nix-community/NUR main
+    url = "https://github.com/nix-community/NUR/archive/823a4442ad490c3c7e249dd7b64f5ef2e53ffa66.tar.gz";
+    # nix-prefetch-url --unpack https://github.com/nix-community/NUR/archive/823a4442ad490c3c7e249dd7b64f5ef2e53ffa66.tar.gz
+    sha256 = "0dza6vzcm162g70w49ypc9qq4178amh9ifad5xwglgxzh0yk93z5";
   }) {
     inherit pkgs;
   };
 
   # https://discourse.nixos.org/t/installing-only-a-single-package-from-unstable/5598/4
   unstable = import (builtins.fetchGit {
-    name = "nixos-unstable-2026-03-01";
+    name = "nixos-unstable-2026-11-01";
     url = "https://github.com/nixos/nixpkgs/";
     ref = "refs/heads/nixos-unstable";
     # `git ls-remote https://github.com/nixos/nixpkgs nixos-unstable`
-    rev = "dd9b079222d43e1943b6ebd802f04fd959dc8e61";
+    rev = "1c89083e451e891152365b799595cf7790a43325";
   }) {
     config = config.nixpkgs.config;
   };
@@ -58,12 +58,6 @@ let
       #   # nix-hash --flat --base32 --type sha256 out.zip
       #   sha256 = "0zmjsszav43wj5nhq24m3nvzqjwqj3q3c61j466nai9sdwbbycdk";
       # }
-      {
-        name = "ty";
-        publisher = "astral-sh";
-        version = "2026.20.0";
-        sha256 = "RveYO0k5wFotZ6R+7vYAIKoHBaurLPzx0Uv0EMPeinc=";
-      }
     ];
   };
 in
